@@ -1,0 +1,34 @@
+Java
+
+Programming language -> Mobile apps, Desktop apps, Web apps
+
+Java Standard Edition (JSE) - Core Java - Desktop applications
+
+Java Enterprise Edition (JEE) - Advanced Java - Web applications
+
+Java Mobile Edition (JME) - Mobile applications
+
+Objected Oriented: Representation of realtime entities(objects) into programmble objects for developoing an application.
+
+
+
+
+Platform Independent: It can run on any software(i.e., any os).
+
+Secure
+
+Robust
+
+Job->Money
+
+1. Free Lancing
+2. Write some books
+3. Trainings
+
+
+Environment setup:
+
+Installing Java:
+
+        JDK: Java Development Kit ->
+        JRE: Java Runtime Environment ->
