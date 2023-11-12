@@ -1,0 +1,355 @@
+Datatypes: 
+​
+In Java, Datatypes are categorized into 2 types. 
+​
+1. Primitive Types : 
+​
+byte, short, int, long, float, double, boolean, char
+​
+ex: int a=100;   char x= 'v';
+
+If we dont assign values to the variables there will be default values printed when they called. In java, there will not be any undefined values.
+​
+​
+​
+public class Datatypes {
+​
+	public static void main(String[] args) {
+		
+		 byte byteV = 127;
+		 short shortV = 898;
+		 int intV = 878788;
+		 long longV= 8787878787l;
+		 boolean bV = true;
+		 char chV = 'x';  //defalut value is space
+		 float fV = 878.87F;
+		 double dV = 7888888887.12D;
+		 System.out.println(byteV);
+		 System.out.println(shortV);
+		 System.out.println(intV);
+		 System.out.println(longV);
+		 System.out.println(bV);
+		 System.out.println(chV);
+		 System.out.println(fV);
+		 System.out.println(dV);
+		 
+		
+	}
+}
+​
+​
+Ref: https://www.google.com/search?q=java+datatypes&sca_esv=579969189&rlz=1C1CHZN_enIN1032IN1032&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjDk46v4bCCAxUixzgGHU7vCToQ_AUoAXoECAIQAw&biw=1536&bih=739&dpr=1.25#imgrc=799YmaflnJaNNM
+​
+​
+2. Non Primitive Types : 
+​
+Any class / Interface used as a type is considered as Non Primitive Type. 
+​
+ String username="abc";  //String is a class name and username is varaible.
+​
+ Customer client = new Customer();  //Here Customer is class which is non primitive type and client is variable.
+​
+​
+Control Statements:
+​
+We can categorize control statements into 3 types. 
+​
+1. Sequential : if, if-else, switch
+​
+if: 
+​
+  syntax:  if(test-condition){
+​
+    // code
+  }
+​
+  
+public class Sequential {
+​
+	 public static void main(String[] args) {
+		
+		 int age=19; 
+		 
+		 if(age >= 18) {
+			 System.out.println("Eligible to Vote");
+		 }
+		 
+		 
+	}
+}
+​
+​ 
+ String username = "Kiran";
+ if(username.length() < 8) {
+			 System.out.println("Username should be atleast 8 chars");
+		 }
+​
+​
+usage: when we have to deal with a condition / one condition, then use if statement.
+​
+​
+if-else:
+​
+when we have 2 conditions, then use if-else:
+​
+syntax:
+​
+if(test-condition)
+{
+  // code
+}
+else{
+  // code
+}
+​
+​Refer: Sequential.java
+​
+public class Sequential {
+​
+	 public static void main(String[] args) {
+		
+		 int age=19; 
+		 
+		 if(age >= 18) {
+			 System.out.println("Eligible to Vote");
+		 }
+		 else {
+			 System.out.println("Not Eligible to Vote");
+		 }
+		
+		 
+		 String username="kiran123"; 
+		 
+		 if(username.length() < 8) {
+			 System.out.println("Username should be atleast 8 chars");
+		 }
+		 else {
+			 System.out.println("Username accepted");
+		 }
+		 
+		 
+		 
+	}
+}
+​
+​
+switch:
+​
+If we have more than two conditions, we can use switch case.
+​
+syntax: 
+​
+ switch(choice){
+​
+      case case_value1:    code 
+      case case_value2:    code
+      .
+      .
+      .
+      .
+      case case_valuen:     code 
+      default:   code
+​
+ }
+​
+ Problem Statement: 
+​
+ Create a switch case provides different seating for trains.
+ Refer:Trainseating.java
+​
+ import java.util.Scanner;
+
+public class Trainseating {
+
+	public static void main(String[] args) {
+		System.out.println("1.Second class\n 2.Sleeper\n 3.3A\n 4.2A\n 5.1A\n");
+		System.out.println("Enter your choice");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int choice = sc.nextInt();
+		
+		System.out.println("You choosed:" +choice);
+		
+		switch(choice) {
+		
+		case 1: System.out.println("You choose Second class"); break;
+		case 2: System.out.println("You choose Sleeper"); break;
+		case 3: System.out.println("You choose 3A"); break;
+		case 4: System.out.println("You choose 2A"); break;
+		case 5: System.out.println("You choose 1A"); break;
+		default:System.out.println("N/A");
+		}
+
+	}
+
+}
+
+​
+Task:
+​
+Problem Statement: 
+​
+Create a list of languages for the user using syso and let the user select one language from it. 
+based on the selection display the text (hardcoded). 
+
+Refer:Translating.java
+
+import java.util.Scanner;
+
+public class Translating {
+
+	public static void main(String[] args) {
+		System.out.println("Select your Language to know word hello How it is pronounced in 5 different languages");
+		System.out.println("For Telugu press 1\n For Hindi press 2\n For Tamil press 3\n For Punjabi press 4\n For Marathi press 5\n ");
+		//System.out.println("Choose the word that you want to know in Telugu, Tamil, Hindi, Punjabi and Marathi Languages\n For hello press 1\n For hi press 2\n For how are you? press 3\n");
+		
+		Scanner language = new Scanner(System.in);
+		
+		int word = language.nextInt();
+		
+		switch(word) {
+		case 1 : System.out.println("In Telugu hello is హలో\n "); break;
+		case 2: System.out.println("In Hindi hello is नमस्ते\n"); break;
+		case 3: System.out.println("In Tamil hello is வணக்கம்\n"); break;
+		case 4: System.out.println("In Punjabi hello is ਸਤ ਸ੍ਰੀ ਅਕਾਲ\n"); break;
+		case 5: System.out.println("In Marathi hello is नमस्कार\n"); break;
+		default: System.out.println("Press the number with in the data base");
+		}
+		
+
+	}
+
+}
+
+Problem statement: create a group of words" hello, hi, how are you?" and if user enters the text, then show the output in which it can pronounced in 5 different languages.
+based on the selection display the text(hardcoded)
+Refer: Languagetranslate.java
+
+import java.util.Scanner;
+public class Languagetranslate {
+	
+public static void main(String[] args) {
+		
+		System.out.println("Choose the word that you want to know in Telugu, Tamil, Hindi, Punjabi and Marathi Languages\n For hello press 1\n For hi press 2\n For how are you? press 3\n");
+		
+		Scanner language = new Scanner(System.in);
+		
+		int word = language.nextInt();
+		
+		switch(word) {
+		case 1 : System.out.println("In Telugu hello is హలో\n In Hindi hello is नमस्ते\n In Tamil hello is வணக்கம்\n In Punjabi hello is ਸਤ ਸ੍ਰੀ ਅਕਾਲ\n In Marathi hello is नमस्कार"); break;
+		case 2: System.out.println("In Telugu hello is హాయ్\n In Hindi hello is नमस्ते\n In Tamil hello is வணக்கம்\n In Punjabi hello is ਸਤ ਸ੍ਰੀ ਹੈਲੋ\n In Marathi hello is हाय"); break;
+		case 3: System.out.println("In Telugu hello is మీరు ఎలా ఉన్నారు?\n In Hindi hello is आप कैसे हैं?\n In Tamil hello is எப்படி இருக்கிறீர்கள்?\n In Punjabi hello is ਤੁਸੀ ਕਿਵੇਂ ਹੋ?\n In Marathi hello is तू कसा आहेस?"); break;
+		default: System.out.println("Press the number with in the data base");
+		}
+		
+
+	}
+
+}
+
+
+​
+​
+2. Iterative : while, do-while , for
+​
+If we want to execute some logic repeatadly with different inputs, then we can use Iterative Statements.
+​
+while: 
+​
+syntax: 
+​
+ while(test-condition){
+​
+    // code
+ }
+​
+​
+Refer:Iterative_while.java
+public class IIterative_while {
+​
+	 public static void main(String[] args) {
+		 int initialValue = 1;
+		 while(initialValue <=10) {
+			   System.out.println(initialValue);
+			   initialValue++;
+		 }
+		 
+	}
+}
+​
+Problem Statement: 
+​
+ Iterate the list of usernames and display them on the console. 
+ Refer:Iterative_while.java
+​
+  String usernames[]= {"kiran","Ram","rajesh","naveen","ramesh","anil"};
+		   
+		      int index = 0; 
+		      
+		      while(index < usernames.length) {
+		    	  System.out.println(usernames[index]);
+		    	  index++;
+		      }
+​
+​
+Problem Statement: 
+​
+Iterate list of products of a brand using while loop.
+​Refer:Iterative_while.java
+
+class Product{
+	String name;
+	long price;
+	String brand;
+}
+public class Iterative_while {
+	
+	
+	 public static void main(String[] args) {
+		
+		 
+		 Product product1 = new Product();
+		 product1.name ="Phone1";
+		 product1.price = 45000;
+		 product1.brand = "Samsung";
+		 Product product2 = new Product();
+		 product2.name ="Phone2";
+		 product2.price = 35000;
+		 product2.brand = "Redmi";
+		 Product product3 = new Product();
+		 product3.name ="Phone3";
+		 product3.price = 65000;
+		 product3.brand = "Realme";
+		 
+		 Product products[]= {product1,product2,product3};
+		 
+		 int index=0;
+		 
+		 while(index<products.length) {
+			 int a=index+1;
+			 //System.out.println(products[index].name);
+			 //System.out.println(products[index].price);
+			 //System.out.println(products[index].brand);
+			 //            or
+			 Product p = products[index];   //Here Product is nonprimitive data type.
+			 System.out.println("product-"+a+"\t"+p.name+ "\t" +p.price+"\t" +p.brand);  //"\t" for four spaces
+			 index++;
+		 }
+		 
+	}
+
+}
+
+output:
+product-1	Phone1	45000	Samsung
+product-2	Phone2	35000	Redmi
+product-3	Phone3	65000	Realme
+
+
+​
+​
+3. Jump: continue, return, break, goto (Task)
+​
+​

@@ -1,0 +1,269 @@
+Non Static Variables: 
+​
+If we create any variable without static keyword outside of a method then it is known 
+as Non Static Variable. 
+​
+These can also be called as Instance variables. Here instance means object over here.
+​
+Every object that is created for a class always gets a copy of the non static 
+variable. 
+​
+For Non Static Variables, default values are applicable.
+
+Example:
+class Customer{
+	String name;
+	String customerid;
+	long accountnumber;
+	long accountbalance;
+	
+}
+public class NonStaticVariables {
+
+	public static void main(String[] args) {
+		Customer customer1 = new Customer();
+		System.out.println(customer1.name);  //no input is given to customer1. so it will print default values i.e., null
+		System.out.println(customer1.customerid); //output=null
+		System.out.println(customer1.accountnumber); //output=0
+		System.out.println(customer1.accountbalance); //output=0
+		
+		
+
+	}
+
+}
+
+​Bank application example
+​
+class Customer{
+	String name;
+	String customerid;
+	long accountnumber;
+	long accountbalance;
+	
+}
+public class NonStaticVariables {
+
+	public static void main(String[] args) {
+		Customer customer1 = new Customer();
+		customer1.name="Kiran";
+		customer1.customerid="CUST1234";
+		customer1.accountnumber=78783444;
+		customer1.accountbalance=9000;
+		System.out.println(customer1.name);  
+		System.out.println(customer1.customerid); 
+		System.out.println(customer1.accountnumber);
+		System.out.println(customer1.accountbalance);
+		
+		System.out.println("--------------------------------------------------");
+		
+		Customer customer2 = new Customer();
+		customer2.name = "Nani";
+		customer2.customerid = "CUST12345";
+		customer2.accountbalance =1000;
+		customer2.accountnumber = 783486743;
+		System.out.println(customer2.name);  
+		System.out.println(customer2.customerid); 
+		System.out.println(customer2.accountnumber);
+		System.out.println(customer2.accountbalance);
+		
+		
+		
+
+	}
+
+}
+
+​Bank application using function to print all details at a time.
+ 
+class User{
+	String name;
+	String customerid;
+	long accountnumber;
+	long accountbalance;
+	
+	void printcustomerdetails() {
+		System.out.println(this.name);  
+		System.out.println(this.customerid); 
+		System.out.println(this.accountnumber);
+		System.out.println(this.accountbalance);
+		
+	}
+	
+}
+public class Bankapplication {
+	public static void main(String[] args) {
+		
+		User customer1 = new User();
+		customer1.name="Kiran";
+		customer1.customerid="CUST1234";
+		customer1.accountnumber=78783444;
+		customer1.accountbalance=9000;
+		customer1.printcustomerdetails();
+		
+		System.out.println("--------------------------------------------------");
+		
+		User customer2 = new User();
+		customer2.name = "Nani";
+		customer2.customerid = "CUST12345";
+		customer2.accountbalance =1000;
+		customer2.accountnumber = 783486743;
+		customer2.printcustomerdetails();
+		
+	
+
+	}
+
+}
+​
+​
+Methods: 
+​
+A method is a block of code written inside a class. 
+​
+A method takes an input (optional), process the input and provides some result .
+​
+syntax: 
+​
+  <datatype> method_name(parameters){
+​
+   // code
+​
+  }
+​
+  invocation:  method_name(arguments)
+
+  Parameters means when we create a method we define some variables and those variable are called parameters.
+
+  Arguments means when we run a method we pass values to the variables defined in the function and those values are called arguments.
+​
+​
+We can have 2 types of methods. 
+​
+1. Static method : 
+​
+If we create a method with static keyword, then it is static method.
+​
+static keyword is bound to class that why we call static variables, static methods 
+using class name. 
+​
+​
+2. Non Static Method: 
+​
+If we have any method without static keyword, then it is called non static / instance 
+method. 
+​
+non static methods are bound to object, hence we call them by using objects. 
+​
+​
+public class Method {
+	
+	static int s1=100;
+	int s2=200; // we cannot call nonstatic variable in static methods i.e., in Staticmethod
+	static void Staticmethod() {
+		System.out.println(Method.s1);  // or System.out.println(s1);
+		//we should not call non static variable in static method System.out.println(s2);
+	}
+
+	void Nonstaticmethod() {
+		System.out.println(Method.s1);  // we can call static variables in  Non-static methods.
+		System.out.println(s2);
+	}
+	public static void main(String[] args) {
+		
+		Method.Staticmethod(); //or Staticmethod(); because Staticmethod is with in the class.
+		
+		//TO call Non-static method first we should create an object and then we call using object.
+		
+		Method obj1 = new Method();
+		obj1.Nonstaticmethod();
+		System.out.println(obj1.s2);
+		
+
+	}
+
+}
+
+​
+Problem Statement: 
+​
+Implement a simple banking system with the following features, 
+​
+1. deposit 
+2. withdraw
+3. balance enquiry 
+​
+​
+​
+class Client{
+	String name;
+	int customerid;
+	int balance;
+	static String Bankname = "ICICI";
+	static String IFSCcode = "ICICI134223";
+	
+	void customerdetails() {
+		System.out.println("Customer Name:" +this.name);
+		System.out.println("Customer Id:" +this.customerid);
+		
+	}
+	void deposit(int amount) {
+		this.balance=this.balance+amount;
+		System.out.println("Your Deposit : " +amount);
+		System.out.println("Your updated balance : " +this.balance);
+	}
+	
+	void withdrawl(int amount) {
+		this.balance=this.balance-amount;
+		System.out.println("Your Withdrawl : " +amount);
+		System.out.println("Your updated balance : " +this.balance);
+	}
+	
+	void balanceenquiry() {
+		System.out.println("Your balance : " +this.balance);
+	}
+	
+	static void bankdetails() {
+		System.out.println("Bank Name : " +Client.Bankname);
+		System.out.println("IFSC Code : " +Client.IFSCcode);
+		
+	}
+	
+}
+public class Bankapplicationdetail {
+
+	public static void main(String[] args) {
+		
+		Client customer1 = new Client();
+		customer1.name = "Nani";
+		customer1.customerid = 12345643;
+		customer1.balance = 9000;
+		Client customer2 = new Client();
+		customer2.name = "Veerababu";
+		customer2.customerid = 123456764;
+		customer2.balance = 25000;
+		
+		customer1.customerdetails();
+		Client.bankdetails();
+		customer1.balanceenquiry();
+		customer1.deposit(2000);
+		customer1.balanceenquiry();
+		customer1.withdrawl(5000);
+		customer1.balanceenquiry();
+		
+		System.out.println("-----------------------------------------------------------------------------");
+		customer2.customerdetails();
+		Client.bankdetails();
+		customer2.balanceenquiry();
+		customer2.deposit(2000);
+		customer2.balanceenquiry();
+		customer2.withdrawl(5000);
+		customer2.balanceenquiry();
+		
+		
+
+	}
+
+}
+
+​
