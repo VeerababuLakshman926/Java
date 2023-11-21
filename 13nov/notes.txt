@@ -1,0 +1,268 @@
+Method Overiding: 
+​
+If we are not satisfied with the implementation provided by the super class for a method, then the sub class 
+can take the method signature and can provide its own implementation. 
+​
+​
+ class A1{
+	void m1() {
+		System.out.println("m1 is called");
+	}
+	void m2() {
+		System.out.println("m2 is called");
+	}
+}
+
+class B1 extends A1{
+	void m2() { //overidden
+		System.out.println("m2 is called from B1");
+	}
+}
+public class MethodOveridden {
+	public static void main(String[] args) {
+		B1 b1 = new B1();
+		b1.m1();
+		b1.m2();
+	}
+
+}
+
+​
+​
+Even though we write m2() method in B1 class, still the owner of the m2() method is A1 class only. 
+​
+​
+​
+class Prodct{
+	
+	  String pid = "101";
+	  String name = "Product 1"; 
+	  long price = 1200; 
+	  
+	 void  getProductDetails(){
+		    System.out.println(pid + "\t"+ name + "\t"+ price);  
+	  }
+	  
+}
+​
+class Amazon extends Prodct{
+	
+	void  getProductDetails(){
+		    price= 800;
+	    System.out.println(pid + "\t"+ name + "\t"+ price);  
+  }
+	
+}
+​
+public class MethodOveridingExample {
+	
+	public static void main(String[] args) {
+		
+		Amazon amazon = new Amazon();
+		amazon.getProductDetails();
+	}
+​
+}
+​
+Abstraction: 
+​
+Abstraction is the process of providing only the required details. 
+​
+In this world, everything is abstracted.
+​
+The Abstraction allows to provide a set of guidelines for the implementation. 
+​
+We implement abstraction using interfaces. 
+​
+Interface: 
+syntax: 
+   interface InterfaceName{
+             // abstract methods
+   }
+​
+   
+​
+interface X{
+	abstract void m1();
+	void m2(); //here abstract is added by default
+}
+class XImpl implements X{
+
+	@Override
+	public void m1() {
+		System.out.println("m1 is called");
+		
+	}
+
+	@Override
+	public void m2() {
+		System.out.println("m2 is called");
+		
+	}
+	
+}
+public class InterfaceDemo {
+	public static void main(String[] args) {
+		X x = new XImpl();      //interface objectname = new classname();
+		x.m1();
+		x.m2();
+	}
+
+}
+
+​
+​
+Key points: 
+​
+1. An interface contains only abstract methods and final variables (constant). 
+​
+2. If a class provides implementation for an interface, then it should provide the implementation 
+for all the abstract methods of the interface. 
+​
+3.  We cannot create an object for an interface because all the methods of interface are 
+abstract. 
+​
+4. In case, if a class cannot provide implementation for any method, then that class should be made as 
+abstract class.
+​
+Problem Statement:  Implement Abstraction feature for ac remote. 
+​
+​interface ACRemote{
+	void turnonoff();
+	void increaseTemp();
+	void decreaseTemp();
+	void swingmode();
+}
+
+class Motherboard implements ACRemote{
+	
+	boolean currentACstatus = false;
+	int currentTemp = 26;
+	int highTemp = 32;
+	int lowTemp = 16;
+	boolean swing = false;
+
+	public void turnonoff() {
+		if(this.currentACstatus==false) {
+			//connect to the Device and perform the operation
+			this.currentACstatus=true;
+			System.out.println("AC turned on");
+		}
+		else {
+			this.currentACstatus=false;
+			System.out.println("AC turned off");
+		}
+		
+	}
+
+	
+	public void increaseTemp() {
+		
+		if(currentACstatus==true) {
+			if(currentTemp<highTemp && currentTemp>lowTemp) {
+				this.currentTemp++;
+				System.out.println(this.currentTemp);
+			}
+			else if(currentTemp==lowTemp) {
+				this.currentTemp++;
+				System.out.println(this.currentTemp);
+			}
+			else {
+				System.out.println("The maximum temperature of the AC is 32 degrees only");
+			}
+			
+		}
+		else {
+			System.out.println("Turnon the AC");
+		}
+		
+	}
+
+	
+	public void decreaseTemp() {
+		
+		if(currentACstatus==true) {
+			
+			if(currentTemp<highTemp && currentTemp>lowTemp) {
+				this.currentTemp--;
+				System.out.println(this.currentTemp);
+			}
+			else if(currentTemp==highTemp) {
+				this.currentTemp--;
+				System.out.println(this.currentTemp);
+			}
+			else {
+				System.out.println("The minimum Temperatue in the AC is 16 degrees only");
+			}
+			
+		
+		}
+		else {
+			System.out.println("Turnon the AC");
+		}
+		
+	}
+		
+
+
+	public void swingmode() {
+		
+		if (currentACstatus==true) {
+			if(swing==false) {
+				//connect to the Device and perform the operation
+				this.swing=true;
+				System.out.println("Swing mode is on");
+			}
+			else {
+				this.swing=false;
+				System.out.println("Swing mode is off");
+			}
+			
+		}
+		else {
+			System.out.println("Turnon the AC");
+		}
+	}
+	
+}
+public class ACremoteDemo {
+	public static void main(String[] args) {
+		
+		ACRemote remote = new Motherboard();
+		remote.turnonoff();    //AC turned on
+		remote.swingmode();    //Swing mode is on
+		remote.swingmode();    //Swing mode is off
+		remote.increaseTemp(); //27
+		remote.increaseTemp(); //28
+		remote.increaseTemp(); //29
+		remote.increaseTemp(); //30
+		remote.increaseTemp(); //31
+		remote.increaseTemp(); //32
+		remote.increaseTemp(); //The maximum temperature of the AC is 32 degrees only
+		remote.decreaseTemp(); //31
+		remote.decreaseTemp(); //30
+		remote.decreaseTemp(); //29
+		remote.decreaseTemp(); //28
+		remote.decreaseTemp(); //27
+		remote.decreaseTemp(); //26
+		remote.decreaseTemp(); //25
+		remote.decreaseTemp(); //24
+		remote.decreaseTemp(); //23
+		remote.decreaseTemp(); //22
+		remote.decreaseTemp(); //21
+		remote.decreaseTemp(); //20
+		remote.decreaseTemp(); //19
+		remote.decreaseTemp(); //18
+		remote.decreaseTemp(); //17
+		remote.decreaseTemp(); //16
+		remote.decreaseTemp(); //The minimum Temperature in the AC is 16 degrees.
+		remote.increaseTemp(); //17
+		remote.turnonoff();    //AC turned off
+		remote.increaseTemp(); //Turnon the AC
+		remote.decreaseTemp(); //Turnon the AC
+		remote.swingmode();    //Turnon the AC
+		remote.turnonoff();    //AC turned on
+		
+		
+	}
+}

@@ -46,29 +46,31 @@ A method should follow the below rules to be overloaded.
 1. The method name must be same.
 2. There should be a difference in number of arguments or type of arguments.
 ​
-​
-​
-​
 class Calc{
 	
-	   void add(int a, int b) {
-		   System.out.println(a+b); // 30
-	   }
-	   
-	   void add(int a, int b, int c) {
-		   System.out.println(a+b+c);   // 60
-	   }
+	void add(int a, int b) {
+		System.out.println(a+b);
+	}
+		
+	void add(int a, int b, int c) {
+		System.out.println(a+b+c);
+
+	}
+	
+	
 }
-​
 public class MethodOverloadingDemo {
-​
-	 public static void main(String[] args) {
+	
+	
+	public static void main(String[] args) {
 		Calc calc = new Calc();
 		calc.add(10,20);
-		calc.add(10,20,30);
-		calc.add(10, 9);
+		calc.add(30, 40, 50);
 	}
+	
+
 }
+
 ​
 ​
 Problem Statement: 
@@ -78,69 +80,97 @@ Implement a simple payment application that accepts different modes of payment.
 ​
 ​
 class CashOnDelivery{
-	 String houseNumber; 
-	 String landMark;
-	 String area;
-	 String city;
-	public CashOnDelivery(String houseNumber, String landMark, String area, String city) {
-		this.houseNumber = houseNumber;
-		this.landMark = landMark;
+	String housenumber;
+	String landmark;
+	String area;
+	String city;
+	public CashOnDelivery(String housenumber, String landmark, String area, String city) {
+		super();
+		this.housenumber = housenumber;
+		this.landmark = landmark;
 		this.area = area;
 		this.city = city;
-	}	
+	}
 	
-	 public void showDetails() {
-		 System.out.println( this.houseNumber + "\t"+ this.landMark+"\t"+ this.area+"\t"+ this.city);
-	 }
+	void showDetails() {
+		System.out.println(this.housenumber+"\t"+this.landmark+"\t"+this.area+"\t"+this.city);
+	}
 }
-class CreditCard{
-	 String nameOnTheCard; 
-	 long accountNumber; 
-	 int cvv;
-	public CreditCard(String nameOnTheCard, long accountNumber, int cvv) {
-		
+class Creditcard{
+	String nameOnTheCard;
+	long mobilenumber;
+	int cvv;
+	public Creditcard(String nameOnTheCard, long mobilenumber, int cvv) {
+		super();
 		this.nameOnTheCard = nameOnTheCard;
-		this.accountNumber = accountNumber;
+		this.mobilenumber = mobilenumber;
 		this.cvv = cvv;
-	} 
-	public void showDetails() {
-		 System.out.println( this.nameOnTheCard + "\t"+ this.accountNumber+"\t"+ this.cvv);
-	 }
-	 
+	}
+	void showDetails() {
+		System.out.println(this.nameOnTheCard+"\t"+this.mobilenumber+"\t"+this.cvv);
+	}
+	
 }
 class UPI{
-	 long mobileNumber;
-​
-	public UPI(long mobileNumber) {
+	long mobilenumber;
+
+	public UPI(long mobilenumber) {
 		super();
-		this.mobileNumber = mobileNumber;
-	} 
-	public void showDetails() {
-		 System.out.println( this.mobileNumber);
-	 }
+		this.mobilenumber = mobilenumber;
+	}
+	void showDetails() {
+		System.out.println(this.mobilenumber);
+	}
 }
-​
-class Payment{
-	 void pay(CashOnDelivery cod){
-		   cod.showDetails();
-		   // logic to process payment
-	  }
-	 void pay(UPI upi) {
-		  upi.showDetails();
-	 }
-	 void pay(CreditCard cc) {
-		    cc.showDetails();
-	 }
+
+class payment{
+	void pay(CashOnDelivery cod) {
+		cod.showDetails();
+	}
+	void pay(UPI upi) {
+		upi.showDetails();
+	}
+	void pay(Creditcard cc) {
+		cc.showDetails();
+	}
+	
+	
 }
 public class PaymentDemo {
-	
 	public static void main(String[] args) {
-		CashOnDelivery cashOnDelivery = new CashOnDelivery("787888/12s", "near temple", "Hitech city", "Hyderabad");
-		Payment payment = new Payment(); 
-		//payment.pay(cashOnDelivery);
-		UPI upi= new UPI(909090909091L);
-		payment.pay(upi);
+		CashOnDelivery cod1 = new CashOnDelivery("10/25-6","near ramalayam","Narayanapeta","Amalapuram");
+		CashOnDelivery cod2 = new CashOnDelivery("10/525-6","near Durga temple","Narayan Nagar","Amalapuram");
+		payment pay1 = new payment();
 		
+		cod1.showDetails();
+		cod2.showDetails();
+		
+		System.out.println("----------");
+		pay1.pay(cod1);
+		pay1.pay(cod2);
+		
+		System.out.println("-------------------------------------------------------------------");
+		UPI upi1 = new UPI(7703535482l);
+		UPI upi2 = new UPI(454525154121l);
+		upi1.showDetails();
+		upi2.showDetails();
+		
+		System.out.println("----------");
+		pay1.pay(upi1);
+		pay1.pay(upi2);
+		
+		System.out.println("-------------------------------------------------------------------");
+		Creditcard cc1 = new Creditcard("lakshman", 42522322555l, 128);
+		Creditcard cc2 = new Creditcard("veerababu",85252224555l, 143);
+		cc1.showDetails();
+		cc2.showDetails();
+		
+		
+		
+		System.out.println("----------");
+		
+		pay1.pay(cc1);
+		pay1.pay(cc2);
 	}
-​
+
 }

@@ -1,0 +1,189 @@
+Arrays: 
+​
+An Array is a linear data structure that stores the data in the sequential order.
+​
+Syntax: 
+​
+datatype arrayname[]= {};
+​
+​
+
+public class ArrayDemo {
+	
+	public static void main(String[] args) {
+		
+		String users[] = {"Kiran", "Rajesh", "Naveen"};
+		
+		System.out.println(users[1]);
+		System.out.println(users[0]);
+		System.out.println(users[2]);
+		
+		//System.out.println(users[3]); It will error of index 3 is out of bounds for length 3
+		
+		users[2] = "John";
+		
+		System.out.println(users[2]);
+		
+		users[3] = "Mike";
+		System.out.println(users[3]);
+		
+		//System.out.println(users[3]); It will error of index 3 is out of bounds for length 3
+		//In java arrays are static, once we create an array, we cannot add an element but we can modify the existing elements.
+
+        String client[] = new String[10];
+		
+	}
+
+}
+
+​
+​
+Key Points: 
+​
+1. In Java, Arrays are static which means once we create an Array, we cannot extend it. 
+​
+2. We can define size of the array at the time of the creation.
+​
+3. Once an Array is created then we cannot provide a size to it. 
+​
+4. Java did not provide any predefined functions that helps in the array operations such as adding, removing, 
+updating elements etc. 
+​
+5. We can store only one type of values in the array.
+​
+Hence if we have the clarity on how many elements we can store then we can use Arrays.
+​
+To Overcome these drawbacks, Java provided ArrayList in Collection Framework.
+​
+ArrayList works with objects which means even if we want to store the primitive types, we should treat them 
+as objects.
+​
+example:
+​
+import java.util.ArrayList;
+
+public class ArrayListDemo {
+	
+	public static void main(String[] args) {
+		
+		ArrayList al = new ArrayList();
+		
+		al.add(100);
+		al.add(20);
+		al.add(500);
+		al.add('a');
+		al.add("Kiran");
+		al.add(true);
+		
+		System.out.println(al);
+		System.out.println(al.contains("Kiran"));
+		System.out.println(al.contains("kiran"));
+		
+		al.add(2, "nani");
+		System.out.println(al);
+	}
+
+}
+
+​
+String:
+​
+A String is a Collection of characters.
+​
+syntax: 
+​
+String var_name = " ";
+​
+In Java, Strings are immutable which means once we create a String, we cannot modify it which means we cannot 
+rewrite the string value instead we can reassign.
+​
+
+public class StringDemo {
+	
+	public static void main(String[] args) {
+		
+		String s1 = "Digital";
+		System.out.println(s1);
+		
+		String s2 = "lync";
+		System.out.println(s2);
+		
+		s1.concat(s2); //In java strings are immutable, so thats why we cannot modify the strings but instead we can reassign them.
+		System.out.println(s1); //output=Digital
+		
+		s1=s1.concat(s2); //Here we reassigned it 
+		System.out.println(s1); //output = Digitallync
+		
+		System.out.println(s1.charAt(0)); //D
+		System.out.println(s1.equals("Digitallync")); //true
+		System.out.println(s1.equals("digitallync")); //false
+		System.out.println(s1.equalsIgnoreCase("digitallync")); //true
+		System.out.println(s1.isEmpty());
+		
+	}
+
+}
+
+​
+When we create a String using new keyword, then it will be stored in heap area.
+​
+When we create a String without using new keyword, then it will be stored in string constant pool. 
+​
+​
+​
+public class StringDemo2 {
+	
+	public static void main(String[] args) {
+		
+		String s1 = new String("hello");
+		String s2 = new String("hello");
+		System.out.println(s1.equals(s2));
+		System.out.println(s1==s2); //output is false here address are checked and for the object using new keyword addresses are stored in heap area.
+		
+		String s3 = s2;
+		System.out.println(s2==s3); // output is true. we are referring to the address s2.
+		
+		String s4 = "digital";
+		String s5 = "digital";
+		System.out.println(s4 == s5); //output is true because for the object not using keyword new it is stored in string pool and if the values are same for 2 objects then addresses are same both the objects.
+		
+		
+		s4 = s4.concat("lync");
+		System.out.println(s4==s5);  //output is false
+		
+		String s6 = "digital";
+		System.out.println(s6 == s5); //output is true because address are same
+		
+		String s7 = "digitallync";
+		System.out.println(s4);
+		System.out.println(s7);
+		System.out.println(s7==s4); //output is false because address are not same for s4 and s7 because of reassigning the string s4 with concatination
+	}
+
+}
+
+
+/*
+ upto line number 14
+ address s4 -> 101x -> "digital" 
+         s5 -> 101x -> "digital" 
+         line number 15 addresses are same it is giving true.
+         
+at line 18 object s4 is reassigned into "digitallync".
+		the content in the object s4 and s5 are changed.
+		then memory allocation is different for the objects s4 and s5 that means addresses are changed
+		s4 -> 104x -> "digitallync" 
+        s5 -> 101x -> "digital"
+        
+at line number 21 s6 is defined and the content in the object s6 and s5 are same
+		so the address for s5 and s6 are same
+		s6 -> 101x -> "digital"
+  
+ at line 24 s7 is defined and the content in the object s7 and s4 are same but s4 is reassigned with concatination, 
+ so string pool never touch the s4 string that means it address will never be share by the another object.
+  So, the address for s4 is not shared by the other string even though it has same data.
+ 		so the address for s7 and s4 are not same
+ 		s7 -> 105x -> "digitallync"
+ * 
+ * 
+ */
