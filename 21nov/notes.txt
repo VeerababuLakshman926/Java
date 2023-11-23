@@ -9,11 +9,12 @@ execution.
 ​
 ​
 public class BasicExceptionDemo {
+	
 	public static void main(String[] args) {
 		
 		
 		  String arr[] = {"user1","user2","user3"};
-		   String username= "kiran"; 
+		   String username= "nani"; 
 		   try {
 			   System.out.println(arr[3]);
 		   }catch(Exception e) {
@@ -25,8 +26,9 @@ public class BasicExceptionDemo {
 		   
 		   System.out.println(username);
 	}
-​
+
 }
+
 ​
 ​
 We use try and catch blocks to handle exceptions. 
@@ -48,25 +50,57 @@ Ex:
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-​
+
 public class CheckedExceptionDemo {
-	
+
 	public static void main(String[] args) {
-		
-		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
 		System.out.println("Enter your name");
 		
 		try {
-		 String name= br.readLine();
-		 System.out.println("entered name:"+ name);
+		String name = br.readLine();
+		System.out.println("Entered name "+ name);
 		}
 		catch(IOException e) {
-			  System.out.println(e);
+			System.out.println(e);
 		}
-		
-		
-		
 	}
-​
+
 }
+
+Whether we have to use throws or try catch in the exceptions:
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class CheckedExceptionDemo2 {
+
+	public static void main(String[] args) throws FileNotFoundException, IOException  {
+		
+		
+		
+		FileReader fr;
+		try {
+			fr = new FileReader("c://abc");
+		} catch (FileNotFoundException e) {//If we dont know the exception we can just use Throwable or Exception(exception is the sub class of throwable class and where all the exceptions are there) in place of FileNotFoundException  and it will take care of the type of exception
+			
+			System.out.println(e);
+		}
+			
+		
+		String str = "Kiran";
+		System.out.println(str);
+		
+		//throws are not solving the issue but it will suppress the warning and it will not skip the error, it does not have any internal catch block to display the message, it will just display the error and the rest of the code lines are not iterated, they will be blocked
+		FileReader fr1 = new FileReader("b://add0");
+		fr1.close();		//here the issue is not resolved and code will stop running the below lines
+		
+		//These lines are not executed because the exception is not resolved
+		String str2 = "Naveen";
+		System.out.println(str);
+	}
+
+}
+
